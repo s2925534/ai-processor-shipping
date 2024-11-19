@@ -34,3 +34,10 @@ export async function aiExtractionOfInformation(instructions: string, text:strin
         console.error("Error extracting information:", error);
     }
 }
+
+export async function extractContainerNumbers(text: string) {
+    const regex = /\b[a-zA-Z]{3}[uUzZjJ][0-9]{6}[0-9]\b/g;
+    const matches = text.match(regex) || []; // Find all matches or return an empty array
+     // Deduplicate and normalize to uppercase
+    return [...new Set(matches.map(match => match.toUpperCase()))];
+}
