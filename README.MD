@@ -1,6 +1,8 @@
 # API Processor
 
-This project is an API AI based processor designed to quickly spin up a new API codebase using AI, TypeScript, Express, 
+This project is an API AI based processor for shipping containers, it was designed to quickly spin up a new API 
+codebase using 
+AI, TypeScript, Express, 
 and Sequelize for database interaction. The setup provides the basic functionality to get started with a REST API and can be easily extended for your needs.
 
 ## Features
@@ -29,8 +31,8 @@ Follow these steps to set up the project on your local machine:
 First, clone this repository to your local machine:
 
 ```bash
-git clone git@github.com:s2925534/ai-processor.git
-cd api-processor
+git clone git@github.com:s2925534/ai-processor-shipping.git
+cd ai-processor
 ```
 
 ### 2. Install Dependencies
@@ -171,7 +173,7 @@ Feel free to reach out at [pedro@veloso.dev](mailto:pedro@veloso.dev).
 ## Repository
 
 You can find the repository for this project here:  
-[git@github.com:s2925534/ai-processor.git](git@github.com:s2925534/ai-processor.git)
+[git@github.com:s2925534/ai-processor-shipping.git](git@github.com:s2925534/ai-processor-shipping.git)
 
 ## Contributing
 
