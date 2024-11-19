@@ -1,6 +1,7 @@
-# API Template
+# API Processor
 
-This project is an API template designed to quickly spin up a new API codebase using TypeScript, Express, and Sequelize for database interaction. The setup provides the basic functionality to get started with a REST API and can be easily extended for your needs.
+This project is an API AI based processor designed to quickly spin up a new API codebase using AI, TypeScript, Express, 
+and Sequelize for database interaction. The setup provides the basic functionality to get started with a REST API and can be easily extended for your needs.
 
 ## Features
 
@@ -28,8 +29,8 @@ Follow these steps to set up the project on your local machine:
 First, clone this repository to your local machine:
 
 ```bash
-git clone git@github.com:s2925534/api-template.git
-cd api-template
+git clone git@github.com:s2925534/ai-processor.git
+cd api-processor
 ```
 
 ### 2. Install Dependencies
@@ -55,6 +56,8 @@ DATABASE_NAME=your_database_name
 DATABASE_USER=your_database_user
 DATABASE_PASSWORD=your_database_password
 DATABASE_HOST=your_database_host
+OPENAI_API_KEY=chatpgt_key
+FILES_DIR=src/_files -> this is the directory you want to keep files for p[rocessing]
 ```
 
 Ensure that the MySQL database is running, and the credentials provided match those in your `.env` file.
@@ -94,6 +97,7 @@ Once the server is running, you can test the following routes:
 - **GET `/api/get-sample`** – Returns a success message: "Success in GET".
 - **POST `/api/post-sample`** – Returns a success message: "Success in POST".
 - **GET `/api/test`** – A test route that responds with: "Test route works!".
+- **POST `/api/parse`** – A route to request AI to process a file or text and return it in a given format".
 
 You can use tools like **Postman** or **cURL** to test the API endpoints.
 
@@ -140,6 +144,7 @@ Here is the structure of the project:
 │   │   └── sampleRoutes.ts      # Express routes for the API
 │   ├── interfaces/
 │   │   ├── sample.interface.ts  # TypeScript interface for the sample data
+│   │   ├── prompt.interface.ts  # TypeScript interface for the sample data
 │   │   └── sources/
 │   │       └── sampleSource.interface.ts  # Interface for source data
 │   ├── models/
@@ -166,7 +171,7 @@ Feel free to reach out at [pedro@veloso.dev](mailto:pedro@veloso.dev).
 ## Repository
 
 You can find the repository for this project here:  
-[git@github.com:s2925534/api-template.git](git@github.com:s2925534/api-template.git)
+[git@github.com:s2925534/ai-processor.git](git@github.com:s2925534/ai-processor.git)
 
 ## Contributing
 

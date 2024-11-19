@@ -74,7 +74,7 @@ export async function parseFile(req: Request, res: Response) {
         }
 
         // Load the interface and interQuestions content based on the environment variable path
-        const interfaceContent = fs.readFileSync(path.resolve('src', 'interfaces', 'interfacePrompt.interface.ts'), 'utf8');
+        const interfaceContent = fs.readFileSync(path.resolve('src', 'interfaces', 'prompt.interface.ts'), 'utf8');
         const interQuestionsContent = fs.readFileSync(path.resolve(fileDir, 'interQuestions.txt'), 'utf8');
 
         const instructions = `
