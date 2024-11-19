@@ -77,35 +77,21 @@ export async function parseFile(req: Request, res: Response) {
         const interfaceContent = fs.readFileSync(path.resolve('src', 'interfaces', 'prompt.interface.ts'), 'utf8');
         const interQuestionsContent = fs.readFileSync(path.resolve(fileDir, 'interQuestions.txt'), 'utf8');
 
-        const instructions = `
-Given this
-${text}
-extract the relevant information and populate the JSON object strictly according to the \`DocumentData\` interface specification below.
+        let queryConcatenated = queries.join('\n');
+        let instructions = '';
+        if(text !== null && text !== ''){
+            instructions += `Given this ${text}`;
+        }
+        if(queryConcatenated !== null && queryConcatenated !== ''){
+            instructions += `\n${queryConcatenated}`;
+        }
+        if(interfaceContent !== null && interfaceContent !== ''){
+            instructions += `according to the \`DocumentData\` interface specification below. ${interfaceContent}`;
+        }
 
-${interfaceContent}
-
-Ensure that the information is extracted directly from the provided document content and formatted correctly in the JSON output.
-
-Steps:
-1. **Document Parsing**: Extract all relevant data from the document provided below. This includes names, addresses, dates, shipment information, consignor/consignee details, and any other relevant details as per the \`DocumentData\` interface. Do not use dummy information—only extract details from the actual content.
-
-2. **JSON Structure**: The resulting JSON must follow the \`DocumentData\` interface strictly. If any data is missing, it must be set to \`null\`.
-
-3. **Data Handling**:
-- **String Fields**: Directly extract and assign string values where available.
-- **Date Fields**: For dates, use the format \`YYYY-MM-DD\` where possible.
-- **Boolean Fields**: Infer boolean values based on context in the document (e.g., 'yes' = true, 'no' = false). Set to \`null\` for ambiguity.
-- **Arrays**: If the document mentions multiple items (e.g., multiple contacts, addresses), list each one as a separate entry in their respective arrays.
-- **Missing Data**: For any missing or ambiguous data, explicitly set the corresponding fields to \`null\`.
-
-4. **Output**: Ensure the JSON object fully aligns with the \`DocumentData\` interface structure. If a section in the document does not provide any data, set the corresponding fields to \`null\`.
-
-Below is the document content. Please extract the relevant information and format it as a JSON object based on the \`DocumentData\` interface:
-
-${interQuestionsContent}
-
-Return the JSON object with all extracted data or \`null\` for missing data.
-`;
+        if(interQuestionsContent !== null && interQuestionsContent !== ''){
+            instructions += `\n Consider these questions ${interQuestionsContent}`;
+        }
 
         const result = await aiExtractionOfInformation(instructions, text);
         const resultFilePath = path.join(fileDir, `${path.basename(localFilePath || 'urlContent')}.json`);

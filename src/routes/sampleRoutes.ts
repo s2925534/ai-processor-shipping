@@ -1,9 +1,6 @@
 // src/routes/sampleRoutes.ts
 import express, { Request, Response } from 'express';
 import {getSample, parseFile, postSample} from '../controllers/sampleController';
-import fs from 'fs';
-import path from 'path';
-import { convertPdfToHtml, aiExtractionOfInformation } from '../utils/utils';
 
 const router = express.Router();
 
@@ -16,5 +13,4 @@ router.get('/test', (req: Request, res: Response) => {
 });
 
 router.post('/parse', parseFile);
-
 export default router;
