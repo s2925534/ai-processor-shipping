@@ -1,5 +1,7 @@
+// File Location: ./src/interfaces/prompt.interface.ts
+
 // Shared address structure
-export interface Address {
+    export interface Address {
     streetAddress?: string | null; // Street address (e.g., 123 Main St)
     city?: string | null; // City (e.g., Sydney)
     state?: string | null; // State (e.g., New South Wales)
@@ -120,4 +122,13 @@ export interface EmailCoverSheet {
     message?: string | null; // Message body of the email
     recipient?: string | null; // Recipient's email address
     sender?: string | null; // Sender's email address
+}
+export interface OpenAIPromptConfig {
+    task: 'summarization' | 'categorization' | 'question_answering';
+    inputText: string; // Input text for OpenAI processing
+}
+
+export interface OpenAIResponse {
+    task: string;
+    result: string; // Processed result from OpenAI
 }
